@@ -12,15 +12,16 @@ In the Dapp, there are two functionalities depending on the role of the user it'
 
 ## Architecture
 
-* Dapp is using etherium blockchain.
-* To replicate the network, ganache-cli is used.
-* To scaffold the project, compiling and migrating the contract to network truffle is used.
-* To fetch the realtime temperature of Noida openweathermap API is used
-* Oraclize is used to call the API inside the contract
-* To test in local network etherium-bridge is used
-* you may use wallet of your choice (I used Metamask
+* Dapp is using **etherium blockchain**.
+* To replicate the network, **ganache-cli** is used.
+* To scaffold the project, compiling and migrating the contract to network **truffle** is used.
+* To fetch the realtime temperature of Noida **openweathermap** API is used
+* **Oraclize** is used to call the API inside the contract
+* To test in local network **etherium-bridge** is used
+* you may use wallet of your choice (I used **Metamask**
 )
-Node is server is not used as all the functionality is embedded in app.js
+
+***Node is server is not used as all the functionality is embedded in app.js*
 
 **Note:** *I have removed my api key from the url, kindly use yours (its free :) )*
 
