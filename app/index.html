@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Betting Maker</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <h1>Betting App</h1>
+  <h2>Bet on temperature of Noida :)</h2>
+  
+  <h3>You have <span class="black"><span id="balance"></span> Ethers</span></h3>
+
+  <h4>You can bet either for high or low temperature then 13 degree in next 1 hour, 5 ethers will be deducted on placing 
+    bet and 10 ethers will be credited on winning the bet. Best of Luck.</h4>
+  <br>
+  <div id="betDiv" style="display:none">  
+  <h1>Place Bet</h1>
+  <br><br><button id="sendHigh" onclick="App.putBet(true)">Bet High</button> &nbsp; &nbsp; &nbsp; &nbsp;
+  <button id="sendLow" onclick="App.putBet(false)"> Bet Low </button>
+  <br><br>
+</div>
+
+<div id="isManDiv" style="display:none">
+  <h1>Resolve Bet</h1>
+  <br><br><button id="resolve" onclick="App.resolveBet()">Resolve</button>
+  <br><br>
+</div>
+  <span class="hint" id="status"></span>
+  <br>
+</body>
+</html>
