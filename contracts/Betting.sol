@@ -1,5 +1,5 @@
 pragma solidity ^0.4.17;
-import "github.com/oraclize/ethereum-api/oraclizeAPI.sol";
+import "./oraclizeAPI.sol";
 
 //** if import is not working copy and paste oraclize contract from github
 // also please replace <api_key> with your registered apikey its free :)
@@ -64,7 +64,7 @@ contract Betting is usingOraclize {
         return false;  
     }
 
-    function stringToUint(string s) constant returns (uint result) {
+    function stringToUint(string s) pure returns (uint result) {
         bytes memory b = bytes(s);
         uint i;
         result = 0;
@@ -78,7 +78,7 @@ contract Betting is usingOraclize {
 
     function callCallback() payable {
         require(msg.sender == manager);
-        oraclize_query("URL", "json(http://api.openweathermap.org/data/2.5/weather?zip=201304,in&appid=<api_key>&units=metric).main.temp");
+        oraclize_query("URL", "json(http://api.openweathermap.org/data/2.5/weather?zip=201304,in&appid=6c912697b4e1f97e9a79596f2bb91145&units=metric).main.temp");
     }
 
     function __callback(bytes32 myid, string result) {
@@ -87,11 +87,11 @@ contract Betting is usingOraclize {
         resolveBet(); 
     }
 
-    function getBetData(uint betId) public constant returns(uint, address, address, bytes32, Status) {
+    function getBetData(uint betId) public view returns(uint, address, address, bytes32, Status) {
         return (bets[betId].id, bets[betId].hiBy, bets[betId].loBy, bets[betId].city, bets[betId].status);
     }
 
-    function isManager() public constant returns(bool, bool) {
+    function isManager() public view returns(bool, bool) {
         if (manager == msg.sender) {
             if (bets[betSeq].status == Status.PENDING) {
                 return (true, true);
@@ -103,7 +103,7 @@ contract Betting is usingOraclize {
         }
     }
 
-    function getAddressOfBet() public constant returns(bool, bool) {
+    function getAddressOfBet() public view returns(bool, bool) {
         if (msg.sender == bets[betSeq].hiBy && bets[betSeq].status != Status.RESOLVED) {
             return (true, true);
         }else if (msg.sender == bets[betSeq].loBy && bets[betSeq].status != Status.RESOLVED) {
@@ -113,7 +113,7 @@ contract Betting is usingOraclize {
         }
     }
 
-    function getBalance() public constant returns(uint) {
+    function getBalance() public view returns(uint) {
         return this.balance;
     }
 }
